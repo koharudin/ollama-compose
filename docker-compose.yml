@@ -13,11 +13,12 @@ services:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
     ports:
-      - "3000:8080"
+      - "2021:8080"
     volumes:
       - ./dev-docker-volumes/open-webui-data:/app/backend/data
     environment:
       - OLLAMA_API_BASE_URL=http://ollama:11434
+      - WEBUI_AUTH=false  # 🔑 ini memungkinkan akses tamu (guest)
     depends_on:
       - ollama
     restart: unless-stopped
